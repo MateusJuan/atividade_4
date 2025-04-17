@@ -1,15 +1,6 @@
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from 'react-native';
+import {SafeAreaView,View,StyleSheet,Text,TextInput,TouchableOpacity,ScrollView,Image,} from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 const categorias = [

@@ -1,37 +1,38 @@
-import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
-import React from 'react';
-import {SafeAreaView,View,StyleSheet,Text,TextInput,TouchableOpacity,ScrollView,Image,} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {SafeAreaView,View,StyleSheet,Text,TextInput,TouchableOpacity,ScrollView,Image,
+} from 'react-native';
 import { Avatar } from 'react-native-elements';
-
-const categorias = [
-  { nome: 'Resort', icone: 'beach-access', tipo: 'MaterialIcons' },
-  { nome: 'Casa de Família', icone: 'home', tipo: 'MaterialIcons' },
-  { nome: 'Hotel', icone: 'hotel', tipo: 'MaterialIcons' },
-  { nome: 'Pousada', icone: 'location-city', tipo: 'MaterialIcons' },
-  { nome: 'Vila', icone: 'building', tipo: 'FontAwesome' },
-  { nome: 'Apartmento', icone: 'business', tipo: 'MaterialIcons' },
-  { nome: 'Hostel', icone: 'bed', tipo: 'FontAwesome' },
-  { nome: 'Veja mais ', icone: 'th-large', tipo: 'FontAwesome' }
-];
-
-const imagens_populares = [
-  'https://static.todamateria.com.br/upload/es/ta/estado-de-pernambuco-og.jpg?class=ogImageWide',
-  'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0f/9a/fc/66.jpg',
-  'https://www.vaidepromo.com.br/blog/wp-content/uploads/2024/03/Cidade-mais-visitada-dos-EUA-1024x682.jpg',
-  'https://midias.eurodicas.com.br/wp-content/uploads/2024/07/tudo-sobre-espanha-1-824x420.jpg.webp',
-  'https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/qu18o8metz5esnm01sdv?_a=BACADKGT',
-    'https://www.essemundoenosso.com.br/wp-content/uploads/2021/12/vila-mangueira-destaque.jpg',
-  'https://enoestilo.com.br/wp-content/uploads/2014/06/paris-france-revista-enoestilo.jpg'
-];
-
-const imagens_recomendadas = [
-  'https://static.todamateria.com.br/upload/es/ta/estado-de-pernambuco-og.jpg?class=ogImageWide',
-  'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0f/9a/fc/66.jpg',
-  'https://www.essemundoenosso.com.br/wp-content/uploads/2021/12/vila-mangueira-destaque.jpg',
-  'https://enoestilo.com.br/wp-content/uploads/2014/06/paris-france-revista-enoestilo.jpg'
-];
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 export default function App() {
+  const [categorias, setCategorias] = useState([]);
+  const [imagensPopulares, setImagensPopulares] = useState([]);
+  const [imagensRecomendadas, setImagensRecomendadas] = useState([]);
+
+  useEffect(() => {
+    const fetchDados = async () => {
+      try {
+        const [resCategorias, resPopulares, resRecomendados] = await Promise.all([
+          fetch('http://localhost:3000/categorias'),
+          fetch('http://localhost:3000/destinos_populares'),
+          fetch('http://localhost:3000/recomendados'),
+        ]);
+
+        const categoriasData = await resCategorias.json();
+        const popularesData = await resPopulares.json();
+        const recomendadosData = await resRecomendados.json();
+
+        setCategorias(categoriasData);
+        setImagensPopulares(popularesData.map(item => item.link));
+        setImagensRecomendadas(recomendadosData.map(item => item.link));
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+
+    fetchDados();
+  }, []);
+
   return (
     <SafeAreaView style={estilos.container}>
       {/* HEADER */}
@@ -72,7 +73,7 @@ export default function App() {
         </View>
       </View>
 
-      {/* CONTEÚDO PRINCIPAL COM SCROLL */}
+      {/* CONTEÚDO PRINCIPAL */}
       <ScrollView style={estilos.conteudo} showsVerticalScrollIndicator={false}>
         <View style={estilos.linhaTitulo}>
           <Text style={estilos.conteudo_principal}>Categoria</Text>
@@ -103,7 +104,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {imagens_populares.map((url, index) => (
+          {imagensPopulares.map((url, index) => (
             <View key={index} style={estilos.cardDestino}>
               <Image
                 source={{ uri: url }}
@@ -117,7 +118,7 @@ export default function App() {
         <View style={estilos.linhaTitulo}>
           <Text style={estilos.conteudo_principal}>Recomendados</Text>
         </View>
-        {imagens_recomendadas.map((url, index) => (
+        {imagensRecomendadas.map((url, index) => (
           <View key={index} style={estilos.cardRecomendadoVertical}>
             <Image
               source={{ uri: url }}
@@ -129,23 +130,20 @@ export default function App() {
         <View style={{ height: 100 }} />
       </ScrollView>
 
-      {/* MENU FIXO INFERIOR */}
+      {/* MENU INFERIOR */}
       <View style={estilos.menu}>
         <TouchableOpacity style={estilos.item}>
           <MaterialIcons name="home" size={28} color="yellow" />
           <Text style={estilos.textoItem}>Início</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={estilos.item}>
           <FontAwesome name="compass" size={28} color="#fff" />
           <Text style={estilos.textoItem}>Explorar</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={estilos.item}>
           <MaterialIcons name="search" size={28} color="#fff" />
           <Text style={estilos.textoItem}>Pesquisar</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={estilos.item}>
           <MaterialIcons name="person" size={28} color="#fff" />
           <Text style={estilos.textoItem}>Perfil</Text>

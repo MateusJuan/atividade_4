@@ -8,30 +8,37 @@ export default function App() {
   const [categorias, setCategorias] = useState([]);
   const [imagensPopulares, setImagensPopulares] = useState([]);
   const [imagensRecomendadas, setImagensRecomendadas] = useState([]);
+  const [nomeUsuario, setNomeUsuario] = useState('');
+  const [fotoUsuario, setFotoUsuario] = useState('');
 
-  useEffect(() => {
-    const fetchDados = async () => {
-      try {
-        const [resCategorias, resPopulares, resRecomendados] = await Promise.all([
-          fetch('http://localhost:3000/categorias'),
-          fetch('http://localhost:3000/destinos_populares'),
-          fetch('http://localhost:3000/recomendados'),
-        ]);
 
-        const categoriasData = await resCategorias.json();
-        const popularesData = await resPopulares.json();
-        const recomendadosData = await resRecomendados.json();
+useEffect(() => {
+  const fetchDados = async () => {
+    try {
+      const [resCategorias, resPopulares, resRecomendados, resUsuario] = await Promise.all([
+        fetch('http://localhost:3000/categorias'),
+        fetch('http://localhost:3000/destinos_populares'),
+        fetch('http://localhost:3000/recomendados'),
+        fetch('http://localhost:3000/usuario'),
+      ]);
 
-        setCategorias(categoriasData);
-        setImagensPopulares(popularesData.map(item => item.link));
-        setImagensRecomendadas(recomendadosData.map(item => item.link));
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
-      }
-    };
+      const categoriasData = await resCategorias.json();
+      const popularesData = await resPopulares.json();
+      const recomendadosData = await resRecomendados.json();
+      const usuarioData = await resUsuario.json();
 
-    fetchDados();
-  }, []);
+      setCategorias(categoriasData);
+      setImagensPopulares(popularesData.map(item => item.link));
+      setImagensRecomendadas(recomendadosData.map(item => item.link));
+      setNomeUsuario(usuarioData[0]?.nome || 'Usuário');
+      setFotoUsuario(usuarioData[0]?.foto || '');
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+  };
+
+  fetchDados();
+}, []);
 
   return (
     <SafeAreaView style={estilos.container}>
@@ -58,13 +65,11 @@ export default function App() {
           <Avatar
             rounded
             size="medium"
-            source={{
-              uri: 'https://avatars.githubusercontent.com/u/169060996?v=4',
-            }}
+            source={{ uri: fotoUsuario }}
           />
           <View style={estilos.textoBoasVindas}>
             <Text style={estilos.boasVindas}>Bem-vindo!</Text>
-            <Text style={estilos.nome}>Mateus Juan</Text>
+            <Text style={estilos.nome}>{nomeUsuario}</Text>
           </View>
           <TouchableOpacity style={estilos.notificacao}>
             <MaterialIcons name="notifications" size={28} color="gray" />

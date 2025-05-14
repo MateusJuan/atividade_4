@@ -1,81 +1,87 @@
 {
-    "categorias":[
+    "categorias": [
         {
-            "nome":"Resort",
-            "icone":"beach-access",
-            "tipo":"MaterialIcons"
+            "nome": "Resort",
+            "icone": "beach-access",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Casa de Familia",
-            "icone":"home",
-            "tipo":"MaterialIcons"
+            "nome": "Casa de Familia",
+            "icone": "home",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Hotel",
-            "icone":"hotel",
-            "tipo":"MaterialIcons"
+            "nome": "Hotel",
+            "icone": "hotel",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Pousada",
-            "icone":"location-city",
-            "tipo":"MaterialIcons"
+            "nome": "Pousada",
+            "icone": "location-city",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Vila",
-            "icone":"maps-home-work",
-            "tipo":"MaterialIcons"
+            "nome": "Vila",
+            "icone": "maps-home-work",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Apartamento",
-            "icone":"business",
-            "tipo":"MaterialIcons"
+            "nome": "Apartamento",
+            "icone": "business",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Hostel",
-            "icone":"bed",
-            "tipo":"MaterialIcons"
+            "nome": "Hostel",
+            "icone": "bed",
+            "tipo": "MaterialIcons"
         },
         {
-            "nome":"Veja mais",
-            "icone":"arrow-forward",
-            "tipo":"MaterialIcons"
+            "nome": "Veja mais",
+            "icone": "arrow-forward",
+            "tipo": "MaterialIcons"
         }
     ],
-    "destinos_populares":[
+    "destinos_populares": [
         {
-            "link":"https://static.todamateria.com.br/upload/es/ta/estado-de-pernambuco-og.jpg?class=ogImageWide"
+            "link": "https://static.todamateria.com.br/upload/es/ta/estado-de-pernambuco-og.jpg?class=ogImageWide"
         },
         {
-            "link":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0f/9a/fc/66.jpg"
+            "link": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0f/9a/fc/66.jpg"
         },
         {
-            "link":"https://www.vaidepromo.com.br/blog/wp-content/uploads/2024/03/Cidade-mais-visitada-dos-EUA-1024x682.jpg"
+            "link": "https://www.vaidepromo.com.br/blog/wp-content/uploads/2024/03/Cidade-mais-visitada-dos-EUA-1024x682.jpg"
         },
         {
-            "link":"https://midias.eurodicas.com.br/wp-content/uploads/2024/07/tudo-sobre-espanha-1-824x420.jpg.webp"
+            "link": "https://midias.eurodicas.com.br/wp-content/uploads/2024/07/tudo-sobre-espanha-1-824x420.jpg.webp"
         },
         {
-            "link":"https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/qu18o8metz5esnm01sdv?_a=BACADKGT"
+            "link": "https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/qu18o8metz5esnm01sdv?_a=BACADKGT"
         },
         {
-            "link":"https://www.essemundoenosso.com.br/wp-content/uploads/2021/12/vila-mangueira-destaque.jpg"
+            "link": "https://www.essemundoenosso.com.br/wp-content/uploads/2021/12/vila-mangueira-destaque.jpg"
         },
         {
-            "link":"https://viagemeturismo.abril.com.br/wp-content/uploads/2021/11/GettyImages-1022328666.jpg?quality=70"
+            "link": "https://viagemeturismo.abril.com.br/wp-content/uploads/2021/11/GettyImages-1022328666.jpg?quality=70"
         }
     ],
-    "recomendados":[
+    "recomendados": [
         {
-            "link":"https://static.todamateria.com.br/upload/es/ta/estado-de-pernambuco-og.jpg?class=ogImageWide"
+            "link": "https://static.todamateria.com.br/upload/es/ta/estado-de-pernambuco-og.jpg?class=ogImageWide"
         },
         {
-            "link":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0f/9a/fc/66.jpg"
+            "link": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0f/9a/fc/66.jpg"
         },
         {
-            "link":"https://www.essemundoenosso.com.br/wp-content/uploads/2021/12/vila-mangueira-destaque.jpg"
+            "link": "https://www.essemundoenosso.com.br/wp-content/uploads/2021/12/vila-mangueira-destaque.jpg"
         },
         {
-            "link":"https://enoestilo.com.br/wp-content/uploads/2014/06/paris-france-revista-enoestilo.jpg"
+            "link": "https://enoestilo.com.br/wp-content/uploads/2014/06/paris-france-revista-enoestilo.jpg"
+        }
+    ],
+    "usuario":[
+        {
+            "nome":"Mateus Juan",
+            "foto":"https://avatars.githubusercontent.com/u/169060996?v=4"
         }
     ]
 }
